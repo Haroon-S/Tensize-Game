@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import HeadText from '../Components/HeadText'
 import Dice from '../Components/Dice'
+import Confetti from 'react-confetti'
 import './App.css'
 
 function App() {
@@ -83,12 +84,15 @@ function App() {
 
 
   return (
+    <div>
+    {isWin && <Confetti/>}
     <div className="board bg-slate-100 text-slate-800 rounded-2xl drop-shadow-xl ">
       <HeadText />
     <div className='dice mx-auto text-center grid grid-cols-5 gap-x-7 gap-y-10 mt-12 '>       
       {diceElement}
     </div>
       <button onClick={handleRoll} type="button" className=" mt-10 text-white bg-indigo-600 hover:bg-indigo-700 font-semibold drop-shadow-xl rounded-lg text-3xl px-10 py-3 mb-2 ">{isWin ? "Reset" : "Roll"}</button>
+    </div>
     </div>
   )
 }
